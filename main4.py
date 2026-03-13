@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 import telebot
 import requests
 import threading
@@ -46,6 +47,7 @@ if "bot_started" not in st.session_state:
 # -------- STREAMLIT UI -------- #
 
 st.title("Telegram Bot Dashboard")
+st_autorefresh(interval=2000, key="msg_refresh")
 
 tab1, tab2 = st.tabs(["Send Message", "Received Messages"])
 
