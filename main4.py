@@ -9,15 +9,29 @@ from datetime import datetime
 BOT_TOKEN = "8726049487:AAFr-7C9nfXwfEQz1ymXwT3Fj_62oB5vIjI"
 
 bot = telebot.TeleBot(BOT_TOKEN)
-
+ADMIN_ID = 8695947788
 msg_queue = queue.Queue()
 
 # -------- TELEGRAM BOT -------- #
 
 @bot.message_handler(commands=['start'])
 def start(message):
+
+    user = message.from_user.first_name
+    username = message.from_user.username
+    user_id = message.from_user.id
+
     bot.send_message(message.chat.id, "Hey! I am Cipher Bot.")
 
+    admin_msg = f"""
+🚀 New User Started Bot
+
+👤 Name: {user}
+🔗 Username: @{username}
+🆔 ID: {user_id}
+"""
+
+    bot.send_message(ADMIN_ID, admin_msg)
 @bot.message_handler(func=lambda m: True)
 def receive(message):
     user_text = message.text
