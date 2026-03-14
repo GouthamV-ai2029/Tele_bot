@@ -28,10 +28,10 @@ def start(message):
 
 👤 Name: {user}
 🔗 Username: @{username}
-🆔 ID: {user_id}
+🆔 ID: <code>{user_id}</code>
 """
 
-    bot.send_message(ADMIN_ID, admin_msg)
+    bot.send_message(ADMIN_ID, admin_msg, parse_mode = "HTML")
 @bot.message_handler(func=lambda m: True)
 def receive(message):
     user_text = message.text
