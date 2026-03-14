@@ -26,7 +26,7 @@ def start(message):
     admin_msg = f"""
 🚀 New User Started Bot
 
-👤 Name: {user}
+👤 Name: <a>{user}</a>
 🔗 Username: @{username}
 🆔 ID: <code>{user_id}</code>
 """
