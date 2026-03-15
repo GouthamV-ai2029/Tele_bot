@@ -17,8 +17,11 @@ if st.button("Generate QR"):
         qr.save(buf)
         buf.seek(0)
 
-        st.image(buf, caption="Your QR Code", width=250)
+        Img = st.image(buf, caption="Your QR Code", width=250)
         st.success("QR Code Generated Successfully!")
     else:
         st.warning("Please enter something")
+if st.download_button(label= "Download QR",data=Img,file_name="qr.png"):
+    
+
         
