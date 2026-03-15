@@ -21,7 +21,7 @@ if st.button("Generate QR"):
         st.success("QR Code Generated Successfully!")
     else:
         st.warning("Please enter something")
-if st.download_button(label= "Download QR",data=Img,file_name="qr.png"):
+    if st.download_button(label= "Download QR",data=Img,file_name="qr.png"):
     
 
         
