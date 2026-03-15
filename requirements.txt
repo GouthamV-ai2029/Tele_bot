@@ -1,4 +1,2 @@
-streamlit
+flask
 pyTelegramBotAPI
-requests
-streamlit-autorefresh
