@@ -2,14 +2,14 @@ from flask import Flask, request
 import telebot
 import os
 
-TOKEN = "8748531687:AAG8cQiy95YB_lRMxp5AofzcMv6FxV1plxM"
+TOKEN = "8748531687:AAG8cQiy95YB_lRMxp5AofzcMv6FxV1plxM
 
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, "🚀 Bot is Live on Webhook!")
+    bot.reply_to(message, "Bot running on webhook")
 
 @app.route(f"/{TOKEN}", methods=["POST"])
 def webhook():
@@ -19,8 +19,9 @@ def webhook():
     return "ok", 200
 
 @app.route("/")
-def index():
-    return "Bot Running"
+def home():
+    return "Bot Live"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
