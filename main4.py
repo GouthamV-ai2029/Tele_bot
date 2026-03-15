@@ -1,10 +1,24 @@
 import streamlit as st
-import telebot
-st.title("TelegramBotHosting")
-TOKEN = "8748531687:AAG8cQiy95YB_lRMxp5AofzcMv6FxV1plxM"
-bot = telebot.TeleBot(TOKEN)
-@bot.message_handler(commands=['start'])
-def start(message):
-    bot.send_message(message.chat.id, "Bot is hosting through streamlit")
+import qrcode
+from PIL import Image
+from io import BytesIO
 
-bot.polling()
+st.title("QR Code Generator")
+
+# User input
+data = st.text_input("Enter text or link")
+
+if st.button("Generate QR"):
+    if data:
+        qr = qrcode.make(data)
+
+        # Convert image to bytes
+        buf = BytesIO()
+        qr.save(buf)
+        buf.seek(0)
+
+        st.image(buf, caption="Your QR Code", width=250)
+        st.success("QR Code Generated Successfully!")
+    else:
+        st.warning("Please enter something"):
+        
